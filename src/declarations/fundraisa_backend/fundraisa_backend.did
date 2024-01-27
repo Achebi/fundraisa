@@ -1,0 +1,21 @@
+type User = 
+ record {
+   name: text;
+   "principal": principal;
+   yearOfBirth: nat;
+ };
+type Campaign = 
+ record {
+   contributionDestination: text;
+   ended: bool;
+   goal: nat;
+   owner: principal;
+   totalRaised: nat;
+ };
+service : {
+  contributeToCampaign: (text, nat) -> ();
+  createCampaign: (text, nat, text) -> (Campaign);
+  createUser: (text, nat) -> (User);
+  endCampaign: (text) -> ();
+  getCampaignDetails: (text) -> (Campaign) query;
+}
